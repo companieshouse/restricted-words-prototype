@@ -33,9 +33,9 @@
           <tbody class="govuk-table__body">
             {% for case in cases %}
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell" scope="row">
+                <th class="govuk-table__header" scope="row">
                   {{ case.word }}
-                </td>
+                </th>
                 <td class="govuk-table__cell" scope="row">
                   {{ case.added }}
                 </td>
@@ -54,7 +54,7 @@
           </tbody>
         </table>
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-half">
+          <div class="govuk-grid-column-one-third">
             <div class="table-per-page">
               <form action="/cases/all" method="GET" id="resultsPerPage">
                 {% if viewParams.perPage.value === 2 %}
@@ -121,7 +121,7 @@
               </form>
             </div>
           </div>
-          <div class="govuk-grid-column-one-half">
+          <div class="govuk-grid-column-two-thirds">
             {% if pagination.pages.length > 0 %}
               <ul class="pagination govuk-body" role="navigation">
                 {% if pagination.currentPage > 1 %}
