@@ -30,7 +30,7 @@
             {% for case in cases %}
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="row">
-                  <a class="all-cases_titles" href="/case/page-one?id={{ case.id }}">{{ case.word }}</a>
+                  {{ case.word }}
                 </th>
               </tr>
             {% endfor %}
