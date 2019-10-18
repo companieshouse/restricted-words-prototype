@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sign in to Companies House
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <h1 class="govuk-heading-xl">Sensitive Words</h1>
+      {{ govukButton({
+        text: "Add new word",
+        href: "add-new-word"
+      }) }}
+    </div>
+  </div>
+  <h2 class="govuk-heading-l">All words</h2>
+  {% if cases.length > 0 %}
+    <div class="govuk-grid-row">
+      {% include "includes/filters.html" %}
+      <div class="govuk-grid-column-three-quarters column-results column-results--active">
+        <a href="#filters" class="govuk-link filter-toggle govuk-button">Filter cases</a>
+        <table class="govuk-table" id="all-cases-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Word</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for case in cases %}
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="row">
+                  <a class="all-cases_titles" href="/case/page-one?id={{ case.id }}">{{ case.word }}</a>
+                </th>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <div class="table-per-page">
+              <form action="/cases/all" method="GET" id="resultsPerPage">
+                {% if viewParams.perPage.value === 2 %}
+                  {% set perPage2 = true %}
+                {% endif %}
+                {% if viewParams.perPage.value === 5 %}
+                  {% set perPage5 = true %}
+                {% endif %}
+                {% if viewParams.perPage.value === 10 %}
+                  {% set perPage10 = true %}
+                {% endif %}
+                {% if viewParams.perPage.value === 20 %}
+                  {% set perPage20 = true %}
+                {% endif %}
+                {% if viewParams.perPage.value === 50 %}
+                  {% set perPage50 = true %}
+                {% endif %}
+                {% if viewParams.perPage.value === 100 %}
+                  {% set perPage100 = true %}
+                {% endif %}
+
+                {{ govukSelect({
+                      id: "results-per-page",
+                      classes: "table-per-page__input",
+                      name: "resultsPerPage",
+                      label: {
+                        html: "Cases per page",
+                        classes: "table-per-page__label"
+                      },
+                      items: [
+                        {
+                          value: "2",
+                          text: "2",
+                          selected: perPage2
+                        },
+                        {
+                          value: "5",
+                          text: "5",
+                          selected: perPage5
+                        },
+                        {
+                          value: "10",
+                          text: "10",
+                          selected: perPage10
+                        },
+                        {
+                          value: "20",
+                          text: "20",
+                          selected: perPage20
+                        },
+                        {
+                          value: "50",
+                          text: "50",
+                          selected: perPage50
+                        },
+                        {
+                          value: "100",
+                          text: "100",
+                          selected: perPage100
+                        }
+                      ]
+                    }) }}
+                <input type="hidden" name="sortParam" value="{{ viewParams.sort.active }}">
+              </form>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            {% if pagination.pages.length > 0 %}
+              <ul class="pagination govuk-body" role="navigation">
+                {% if pagination.currentPage > 1 %}
+                  <li class="pagination__item pagination__item--disabled">
+                    <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="pagination__link pagination__link--disabled">Previous page</a>
+                  </li>
+                {% endif %}
+                {% for page in pagination.pages %}
+                  {% if page.number === pagination.currentPage %}
+                    <li class="pagination__item pagination__item--active">
+                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link pagination__link--active">{{ page.number }}</a>
+                    </li>
+                  {% else %}
+                    <li class="pagination__item">
+                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link">{{ page.number }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+                {% if pagination.currentPage < pagination.totalPages %}
+                  <li class="pagination__item">
+                    <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="pagination__link">Next page</a>
+                  </li>
+                {% endif %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  {% else %}
+    <div class="govuk-grid-row">
+      {% include "includes/filters.html" %}
+      <div class="govuk-grid-column-three-quarters column-results column-results--active">
+        <p>There are no words to show</p>
+      </div>
+
+    </div>
+  {% endif %}
+{% endblock %}

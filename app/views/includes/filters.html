@@ -1,0 +1,61 @@
+<div class="govuk-grid-column-one-quarter column-filters">
+  <section class="filters" id="filters">
+    <form action="/cases/all" method="post" id="filter-form">
+
+      <div role="widget" class="filter open">
+        <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">
+          <span id="filter-label-crn"></span>Search by word</span>
+        <div class="toggle"></div>
+      </div>
+      <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
+        {{ govukInput({
+            id: "filter-company-number",
+            name: "filterCompanyNumber",
+            value: filterParams.companyNumber
+          }) }}
+      </div>
+    </div>
+
+    <div role="widget" class="filter open">
+      <div class="govuk-body filters-heading" role="button" aria-controls="filter-status" aria-expanded="true" tabindex="0">
+        <span id="filter-label-status">
+          <span class="govuk-visually-hidden">Filter by
+          </span>Status</span>
+        <div class="toggle"></div>
+      </div>
+      {{ govukCheckboxes({
+          idPrefix: "filter-status",
+          name: "filterStatus",
+          fieldset: {
+            legend: {
+              text: "What case statuses do you want to see?",
+              isPageHeading: false,
+              classes: "govuk-visually-hidden"
+            },
+            classes: "filters-wrapper"
+          },
+          items: [
+            {
+              value: "Active",
+              text: "Active",
+              checked: filterParams.status.referred.checked
+            },
+            {
+              value: "Deleted",
+              text: "Deleted",
+              checked: filterParams.status.accepted.checked
+            }
+          ]
+        }) }}
+    </div>
+    {{ govukButton({
+        text: "Filter cases",
+         classes: "govuk-!-margin-right-1"
+      }) }}
+    {{ govukButton({
+  text: "Clear",
+  classes: "govuk-button--secondary link filter-reset"
+}) }}
+  </form>
+</section>
+</div>
