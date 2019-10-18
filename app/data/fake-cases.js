@@ -1,6 +1,6 @@
 module.exports = [
   {word: 'GIRLS 1 CUP'},
-  {word: '2G1C'},
+  {word: '2G1C', added: 'John Smith', addedon: '10/11/2016', removedon: ''},
   {word: 'A2M'},
   {word: 'ABUSE'},
   {word: 'ACHTERLIJK'},
