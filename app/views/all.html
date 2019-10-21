@@ -45,10 +45,12 @@
                 <td class="govuk-table__cell" scope="row">
                   {{ case.removedon }}
                 </td>
-                <td class="govuk-table__cell" scope="row">{{ govukButton({
-  text: "Delete",
-  classes: "govuk-button--secondary govuk-!-margin-0"
-}) }}</td>
+                <td class="govuk-table__cell" scope="row">
+                  {{ govukButton({
+                    text: "Delete",
+                    classes: "govuk-button--secondary govuk-!-margin-0"
+                  }) }}
+                </td>
               </tr>
             {% endfor %}
           </tbody>
@@ -75,7 +77,6 @@
                 {% if viewParams.perPage.value === 100 %}
                   {% set perPage100 = true %}
                 {% endif %}
-
                 {{ govukSelect({
                       id: "results-per-page",
                       classes: "table-per-page__input",
@@ -149,9 +150,7 @@
             {% endif %}
           </div>
         </div>
-
       </div>
-
     </div>
   {% else %}
     <div class="govuk-grid-row">
@@ -159,7 +158,6 @@
       <div class="govuk-grid-column-three-quarters column-results column-results--active">
         <p>There are no words to show</p>
       </div>
-
     </div>
   {% endif %}
 {% endblock %}
