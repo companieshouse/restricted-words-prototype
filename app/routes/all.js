@@ -168,7 +168,7 @@ module.exports = function (router) {
         for (i = 0; i < sortedCases.length; i++) {
           if (sortedCases[i].company.number.indexOf(req.session.filterParams.companyNumber) !== -1) {
             mimicArray.push(sortedCases[i])
-            console.log(req.session.filterParams.companyNumber + ': ' + sortedCases[i].company.number)
+            // console.log(req.session.filterParams.companyNumber + ': ' + sortedCases[i].company.number)
           }
         }
         sortedCases = mimicArray.splice(0)
@@ -179,7 +179,7 @@ module.exports = function (router) {
         for (i = 0; i < sortedCases.length; i++) {
           if (sortedCases[i].reference.indexOf(req.session.filterParams.caseReference) !== -1) {
             mimicArray.push(sortedCases[i])
-            console.log(req.session.filterParams.caseReference + ': ' + sortedCases[i].reference)
+            // console.log(req.session.filterParams.caseReference + ': ' + sortedCases[i].reference)
           }
         }
         sortedCases = mimicArray.splice(0)
@@ -226,7 +226,7 @@ module.exports = function (router) {
       startPoint = 0
     } else {
       startPoint = (viewParams.perPage.value * (viewParams.page.value - 1))
-      console.log(startPoint)
+      // console.log(startPoint)
     }
     // END POINT
     // start point + perPage or filteredCases.length
@@ -257,10 +257,10 @@ module.exports = function (router) {
         k++
       }
     }
-    console.log(pagination)
+    // console.log(pagination)
     mimicArray = []
     while (startPoint < stopPoint) {
-      console.log(startPoint + ': ' + filteredCases[startPoint].word)
+      // console.log(startPoint + ': ' + filteredCases[startPoint].word)
       mimicArray.push(filteredCases[startPoint])
       startPoint++
     }
@@ -431,7 +431,7 @@ module.exports = function (router) {
       for (i = 0; i < sortedCases.length; i++) {
         if (sortedCases[i].company.number.indexOf(filterCompanyNumber) !== -1) {
           mimicArray.push(sortedCases[i])
-          console.log(filterCompanyNumber + ': ' + sortedCases[i].company.number)
+          // console.log(filterCompanyNumber + ': ' + sortedCases[i].company.number)
         }
       }
       sortedCases = mimicArray.splice(0)
@@ -444,7 +444,7 @@ module.exports = function (router) {
       for (i = 0; i < sortedCases.length; i++) {
         if (sortedCases[i].reference.indexOf(filterCaseReference) !== -1) {
           mimicArray.push(sortedCases[i])
-          console.log(filterCaseReference + ': ' + sortedCases[i].reference)
+          // console.log(filterCaseReference + ': ' + sortedCases[i].reference)
         }
       }
       sortedCases = mimicArray.splice(0)
@@ -495,7 +495,7 @@ module.exports = function (router) {
         for (j = 0; j < filterStatus.length; j++) {
           if (sortedCases[i].status === filterStatus[j]) {
             mimicArray.push(sortedCases[i])
-            console.log(sortedCases[i].word)
+            // console.log(sortedCases[i].word)
           }
         }
       }
@@ -504,7 +504,7 @@ module.exports = function (router) {
     }
     filteredCases = sortedCases.splice(0)
 
-    console.log(filterParams)
+    // console.log(filterParams)
     req.session.filterParams = filterParams
 
     // PER PAGE
@@ -530,7 +530,7 @@ module.exports = function (router) {
       startPoint = 0
     } else {
       startPoint = (viewParams.perPage.value * (viewParams.page.value - 1))
-      console.log(startPoint)
+      // console.log(startPoint)
     }
     // END POINT
     stopPoint = startPoint + viewParams.perPage.value
@@ -559,10 +559,10 @@ module.exports = function (router) {
         k++
       }
     }
-    console.log(pagination)
+    // console.log(pagination)
     mimicArray = []
     while (startPoint < stopPoint) {
-      console.log(startPoint + ': ' + filteredCases[startPoint].word)
+      // console.log(startPoint + ': ' + filteredCases[startPoint].word)
       mimicArray.push(filteredCases[startPoint])
       startPoint++
     }
@@ -577,5 +577,9 @@ module.exports = function (router) {
       filterParams: filterParams,
       pagination: pagination
     })
+  })
+  router.post('/add-new-word', function (req, res) {
+    console.log('test')
+    res.redirect('all')
   })
 }

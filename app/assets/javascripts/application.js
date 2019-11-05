@@ -8,3 +8,8 @@ if (window.console && window.console.info) {
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
+
+// Hide notification on the overview screen
+function dismiss () {
+  document.getElementById('notification').parentNode.style.display = 'none'
+};

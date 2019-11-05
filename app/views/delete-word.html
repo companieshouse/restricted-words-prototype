@@ -14,17 +14,11 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <h1 class="govuk-heading-xl">Add new word</h1>
-      {{ govukInput({
-       label: {
-         text: "The word"
-        },
-        id: "event-name",
-        name: "event-name"
-      }) }}
+      <h1 class="govuk-heading-xl">Delete word</h1>
+
       {{ govukButton({
-       text: "Publish",
-       href: "/all-success"
+        text: "Delete word",
+        classes: "govuk-!-margin-right-1"
       }) }}
     </div>
   </div>
