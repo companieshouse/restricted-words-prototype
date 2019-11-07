@@ -23,7 +23,7 @@
           </span>Status</span>
         <div class="toggle"></div>
       </div>
-      {{ govukCheckboxes({
+      {{ govukRadios({
           idPrefix: "filter-status",
           name: "filterStatus",
           fieldset: {
@@ -35,6 +35,11 @@
             classes: "filters-wrapper"
           },
           items: [
+          {
+            value: "All",
+            text: "All",
+            checked: filterParams.status.referred.checked
+          },
             {
               value: "Active",
               text: "Active",
