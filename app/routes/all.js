@@ -29,24 +29,11 @@ module.exports = function (router) {
 
     // MANAGE VIEW
     viewParams.sort.companyName = {}
-    viewParams.sort.companyName.label = 'Company name'
-    viewParams.sort.companyName.urlString = 'sortParam=companyName'
-    viewParams.sort.companyNumber = {}
-    viewParams.sort.companyNumber.label = 'Company number'
-    viewParams.sort.companyNumber.urlString = 'sortParam=companyNumber'
+    viewParams.sort.companyName.label = 'Word'
+    viewParams.sort.companyName.urlString = 'sortParam=word'
     viewParams.sort.status = {}
     viewParams.sort.status.label = 'Status'
     viewParams.sort.status.urlString = 'sortParam=status'
-    viewParams.sort.priority = {}
-    viewParams.sort.priority.label = 'Priority'
-    viewParams.sort.priority.urlString = 'sortParam=priority'
-    viewParams.sort.reference = {}
-    viewParams.sort.reference.label = 'Reference'
-    viewParams.sort.reference.urlString = 'sortParam=reference'
-    viewParams.sort.referred = {}
-    viewParams.sort.referred.label = 'Referral date'
-    viewParams.sort.referred.urlString = 'sortParam=referred'
-
     if (req.query.sortParam) {
       req.session.sortParam = req.query.sortParam
     }
@@ -75,22 +62,6 @@ module.exports = function (router) {
         viewParams.sort.sorter = 'word'
         viewParams.sort.reverse = true
       }
-      // / COMPANY NUMBER
-      if (req.session.sortParam === 'companyNumber') {
-        viewParams.sort.companyNumber.label = 'Company number (A-Z)'
-        viewParams.sort.companyNumber.urlString = 'sortParam=companyNumberReverse'
-        viewParams.sort.urlString = 'sortParam=companyNumber'
-        viewParams.total.push('sortParam=companyNumberReverse')
-        viewParams.sort.sorter = 'company.number'
-        viewParams.sort.reverse = false
-      } else if (req.session.sortParam === 'companyNumberReverse') {
-        viewParams.sort.companyNumber.label = 'Company number (Z-A)'
-        viewParams.sort.companyNumber.urlString = 'sortParam=companyNumber'
-        viewParams.sort.urlString = 'sortParam=companyNumberReverse'
-        viewParams.total.push('sortParam=companyNumber')
-        viewParams.sort.sorter = 'company.number'
-        viewParams.sort.reverse = true
-      }
       // / STATUS
       if (req.session.sortParam === 'status') {
         viewParams.sort.status.label = 'Status (A-Z)'
@@ -105,54 +76,6 @@ module.exports = function (router) {
         viewParams.sort.urlString = 'sortParam=statusReverse'
         viewParams.total.push('sortParam=status')
         viewParams.sort.sorter = 'status'
-        viewParams.sort.reverse = true
-      }
-      // / PRIORITY
-      if (req.session.sortParam === 'priority') {
-        viewParams.sort.priority.label = 'Priority (A-Z)'
-        viewParams.sort.priority.urlString = 'sortParam=priorityReverse'
-        viewParams.sort.urlString = 'sortParam=priority'
-        viewParams.total.push('sortParam=priorityReverse')
-        viewParams.sort.sorter = 'priority'
-        viewParams.sort.reverse = false
-      } else if (req.session.sortParam === 'priorityReverse') {
-        viewParams.sort.priority.label = 'priority (Z-A)'
-        viewParams.sort.priority.urlString = 'sortParam=priority'
-        viewParams.sort.urlString = 'sortParam=priorityReverse'
-        viewParams.total.push('sortParam=priority')
-        viewParams.sort.sorter = 'priority'
-        viewParams.sort.reverse = true
-      }
-      // / REFERENCE
-      if (req.session.sortParam === 'reference') {
-        viewParams.sort.reference.label = 'Reference (A-Z)'
-        viewParams.sort.reference.urlString = 'sortParam=referenceReverse'
-        viewParams.sort.urlString = 'sortParam=reference'
-        viewParams.total.push('sortParam=referenceReverse')
-        viewParams.sort.sorter = 'reference'
-        viewParams.sort.reverse = false
-      } else if (req.session.sortParam === 'referenceReverse') {
-        viewParams.sort.reference.label = 'reference (Z-A)'
-        viewParams.sort.reference.urlString = 'sortParam=reference'
-        viewParams.sort.urlString = 'sortParam=referenceReverse'
-        viewParams.total.push('sortParam=reference')
-        viewParams.sort.sorter = 'reference'
-        viewParams.sort.reverse = true
-      }
-      // / CREATED DATE
-      if (req.session.sortParam === 'referred') {
-        viewParams.sort.referred.label = 'Referral date (A-Z)'
-        viewParams.sort.referred.urlString = 'sortParam=referredReverse'
-        viewParams.sort.urlString = 'sortParam=referred'
-        viewParams.total.push('sortParam=referredReverse')
-        viewParams.sort.sorter = 'referred'
-        viewParams.sort.reverse = false
-      } else if (req.session.sortParam === 'referredReverse') {
-        viewParams.sort.referred.label = 'Referreal date (Z-A)'
-        viewParams.sort.referred.urlString = 'sortParam=referred'
-        viewParams.sort.urlString = 'sortParam=referredReverse'
-        viewParams.total.push('sortParam=referred')
-        viewParams.sort.sorter = 'referred'
         viewParams.sort.reverse = true
       }
     }
