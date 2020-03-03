@@ -6,7 +6,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       {{ chErrorSummary({
-    titleText: "You've added the word **word**",
+    titleText: "You've added the word **WORD (uppercase)**",
     errorList: [
       {
         text: "The date your passport was issued must be in the past",
@@ -22,14 +22,13 @@
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <h1 class="govuk-heading-xl">Restricted words</h1>
+      <h1 class="govuk-heading-xl">Restricted words list</h1>
       {{ govukButton({
         text: "Add new word",
         href: "add-new-word"
       }) }}
     </div>
   </div>
-  <h2 class="govuk-heading-l">All words</h2>
   {% if cases.length > 0 %}
     <div class="govuk-grid-row">
       {% include "includes/filters.html" %}
@@ -97,7 +96,7 @@
                       classes: "table-per-page__input",
                       name: "resultsPerPage",
                       label: {
-                        html: "Cases per page",
+                        html: "Words per page",
                         classes: "table-per-page__label"
                       },
                       items: [
