@@ -501,10 +501,6 @@ module.exports = function (router) {
       pagination: pagination
     })
   })
-  router.post('/add-new-word', function (req, res) {
-    console.log('test')
-    res.redirect('all')
-  })
 
   // ALL CASES
   router.get('/all-success/', function (req, res) {

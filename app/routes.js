@@ -13,4 +13,33 @@ router.get('/word', function (req, res) {
   })
 })
 
+router.post('/add-new-word', function (req, res) {
+  var errors = []
+  var wordHasError = false
+  var superrestrictedHasError = false
+  if (req.session.data['new-word'] === '') {
+    wordHasError = true
+    errors.push({
+      text: 'Enter a word',
+      href: '#new-word'
+    })
+  }
+  if (typeof req.session.data['super-restricted-word'] === 'undefined') {
+    superrestrictedHasError = true
+    errors.push({
+      text: 'Enter your password',
+      href: '#super-restricted-word'
+    })
+  }
+  if (wordHasError || superrestrictedHasError) {
+    res.render('add-new-word', {
+      errorWord: wordHasError,
+      errorSuperrestricted: superrestrictedHasError,
+      errorList: errors
+    })
+  } else {
+    res.redirect('all-success')
+  }
+})
+
 module.exports = router
