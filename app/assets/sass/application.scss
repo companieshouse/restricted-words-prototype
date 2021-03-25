@@ -57,3 +57,8 @@ tr:nth-child(even) {
 .govuk-table__header {
   padding-top: 0;
 }
+
+.govuk-extra-width-container,
+.govuk-width-overide .govuk-width-container {
+  max-width: 1280px;
+}
