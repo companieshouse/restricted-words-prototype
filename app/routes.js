@@ -13,6 +13,14 @@ router.get('/word', function (req, res) {
   })
 })
 
+router.get('/delete-word', function (req, res) {
+  var word = req.query.word
+  res.render('delete-word', {
+    // To use the company data on that page use the following
+    word: word
+  })
+})
+
 router.post('/add-new-word', function (req, res) {
   var errors = []
   var wordHasError = false

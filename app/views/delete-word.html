@@ -14,15 +14,13 @@
     <div class="govuk-grid-column-one-half">
       <h1 class="govuk-heading-xl">Delete word</h1>
       <p class="govuk-body-l">You are about to delete
-        <span>**word**</span></p>
-      {{ govukButton({
-        text: "Delete word",
-        classes: "govuk-!-margin-right-1"
+        {{word}}</p>
+      <div class="govuk-button-group">
+        {{ govukButton({
+        text: "Delete word"
       }) }}
-      {{ govukButton({
-  text: "Cancel",
-  classes: "govuk-button--secondary"
-}) }}
+        <a class="govuk-link" href="all">Cancel</a>
+      </div>
     </div>
   </div>
 {% endblock %}

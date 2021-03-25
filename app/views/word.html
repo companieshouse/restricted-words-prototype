@@ -12,7 +12,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-three-quarters-from-desktop">
       <h1 class="govuk-heading-xl">{{word}}</h1>
       {{ govukSummaryList({
         rows: [
@@ -52,10 +52,9 @@
       }) }}
 
       {{ govukButton({
-  text: "Delete word",
-  href: "delete-word",
-  classes: "govuk-button--warning"
-}) }}
+      text: "Delete word",
+      href: "delete-word?word=" + word + '',
+      classes: "govuk-button--warning" }) }}
 
       <h2 class="govuk-heading-l">Super restricted</h2>
       {{ govukCheckboxes({
@@ -72,6 +71,9 @@
       text: "Yes"
     }
   ]
+}) }}
+      {{ govukButton({
+  text: "Update"
 }) }}
 
       {{ govukTable({
