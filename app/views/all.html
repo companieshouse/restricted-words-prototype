@@ -30,7 +30,7 @@
             {% for case in cases %}
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="row">
-                  <a href="#" class="govuk-link govuk-link--no-visited-state">{{ case.word }}</a>
+                  <a href="word?word={{ case.word}}" class="govuk-link govuk-link--no-visited-state">{{ case.word }}</a>
                 </th>
                 <td class="govuk-table__cell" scope="row">
                   {{ case.added }}
