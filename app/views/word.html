@@ -21,16 +21,7 @@
               text: "Added by"
             },
             value: {
-              text: "Sarah Philips"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
+              text: " 	rdavies@companieshouse.gov.uk "
             }
           },
           {
@@ -38,16 +29,7 @@
               text: "Date added"
             },
             value: {
-              text: "5 January 1978"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
+              text: "02/03/2016"
             }
           },
           {
@@ -55,16 +37,7 @@
               text: "Date removed"
             },
             value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact information"
-                }
-              ]
+              html: "25/04/2021"
             }
           },
           {
@@ -72,25 +45,29 @@
               text: "Super restricted"
             },
             value: {
-              html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+              html: 'No'
             },
             actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
-            }
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
           }
         ]
       }) }}
 
       {{ govukButton({
   text: "Delete word",
+  href: "delete-word",
   classes: "govuk-button--warning"
 }) }}
+
+      <h2 class="govuk-heading-m">Super restricted history</h2>
+
     </div>
   </div>
 {% endblock %}
