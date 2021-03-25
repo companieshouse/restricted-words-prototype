@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Restricted words
+  Restricted words - Companies House Internal Service
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
@@ -16,7 +16,6 @@
     <div class="govuk-grid-row">
       {% include "includes/filters.html" %}
       <div class="govuk-grid-column-three-quarters column-results column-results--active">
-        <a href="#filters" class="govuk-link filter-toggle govuk-button">Filter cases</a>
         <table class="govuk-table" id="all-cases-table">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
@@ -24,14 +23,14 @@
               <th class="govuk-table__header" scope="col">Added by</th>
               <th class="govuk-table__header" scope="col">Date added</th>
               <th class="govuk-table__header" scope="col">Date removed</th>
-              <th class="govuk-table__header" scope="col">Manage</th>
+              <th class="govuk-table__header" scope="col">Super restricted</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body">
             {% for case in cases %}
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="row">
-                  {{ case.word }}
+                  <a href="#" class="govuk-link govuk-link--no-visited-state">{{ case.word }}</a>
                 </th>
                 <td class="govuk-table__cell" scope="row">
                   {{ case.added }}
@@ -42,13 +41,7 @@
                 <td class="govuk-table__cell" scope="row">
                   {{ case.removedon }}
                 </td>
-                <td class="govuk-table__cell" scope="row">
-                  {{ govukButton({
-                    text: "Delete",
-                    classes: "govuk-button--secondary govuk-!-margin-0",
-                   href: "delete-word.html"
-                  }) }}
-                </td>
+                <td class="govuk-table__cell" scope="row"></td>
               </tr>
             {% endfor %}
           </tbody>

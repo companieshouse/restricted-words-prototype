@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Sign in to Companies House
+  Add new word - Companies House Internal Service
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,10 +22,38 @@
         id: "event-name",
         name: "event-name"
       }) }}
-      {{ govukButton({
-       text: "Add word",
-       href: "/all-success"
-      }) }}
+
+      {{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Is this a super restricted word?"
+    }
+  },
+  hint: {
+    text: "This is an exceptionally offensive word which will be checked in documents."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+         text: "Add new word",
+         href: "/all-success"
+        }) }}
+        <a class="govuk-link" href="all">Cancel</a>
+      </div>
 
       <p class="govuk-!-margin-top-9">
         <a href="add-new-word-cross" class="govuk-link ">**See error page**</a>

@@ -52,3 +52,8 @@ tr:nth-child(even) {
 .filters-wrapper .govuk-radios {
   padding: .5em 0;
 }
+
+.govuk-table__cell,
+.govuk-table__header {
+  padding-top: 0;
+}
