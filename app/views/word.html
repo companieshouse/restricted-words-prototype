@@ -2,14 +2,12 @@
 {% block pageTitle %}
   Restricted words - Companies House Internal Service
 {% endblock %}
-
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "all"
   }) }}
 {% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters-from-desktop">
@@ -50,83 +48,80 @@
           }
         ]
       }) }}
-
       {{ govukButton({
-      text: "Delete word",
-      href: "delete-word?word=" + word + '',
-      classes: "govuk-button--warning" }) }}
-
+        text: "Delete word",
+        href: "delete-word?word=" + word + '',
+        classes: "govuk-button--warning"
+      }) }}
       <h2 class="govuk-heading-l">Super restricted</h2>
       {{ govukCheckboxes({
-  idPrefix: "waste",
-  name: "waste",
-  fieldset: {
-    legend: {
-      text: "Should this word be super restricted?"
-    }
-  },
-  items: [
-    {
-      value: "carcasses",
-      text: "Yes"
-    }
-  ]
-}) }}
+        idPrefix: "waste",
+        name: "waste",
+        fieldset: {
+          legend: {
+            text: "Should this word be super restricted?"
+          }
+        },
+        items: [
+          {
+            value: "carcasses",
+            text: "Yes"
+          }
+        ]
+      }) }}
       {{ govukButton({
-  text: "Update"
-}) }}
-
+        text: "Update"
+      }) }}
       {{ govukTable({
         caption: "Super restricted history",
-          captionClasses: "govuk-table__caption--m",
-  head: [
-    {
-      text: "Date"
-    },
-    {
-      text: "Who"
-    },
-    {
-      text: "What"
-    }
-  ],
-  rows: [
-    [
-      {
-        text: "02/04/2020"
-      },
-      {
-        text: "sberry@companieshouse.gov.uk"
-      },
-      {
-        text: "Made this word super restricted"
-      }
-    ],
-    [
-      {
-        text: "03/05/2019"
-      },
-      {
-        text: "sberry@companieshouse.gov.uk"
-      },
-      {
-        text: "Made this word not super restricted"
-      }
-    ],
-    [
-      {
-        text: "22/08/2016"
-      },
-      {
-        text: "sberry@companieshouse.gov.uk"
-      },
-      {
-        text: "Made this word super restricted"
-      }
-    ]
-  ]
-}) }}
-
+        captionClasses: "govuk-table__caption--m",
+        head: [
+          {
+            text: "Date"
+          },
+          {
+            text: "Who"
+          },
+          {
+            text: "What"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "02/04/2020"
+            },
+            {
+              text: "sberry@companieshouse.gov.uk"
+            },
+            {
+              text: "Made this word super restricted"
+            }
+          ],
+          [
+            {
+              text: "03/05/2019"
+            },
+            {
+              text: "sberry@companieshouse.gov.uk"
+            },
+            {
+              text: "Made this word not super restricted"
+            }
+          ],
+          [
+            {
+              text: "22/08/2016"
+            },
+            {
+              text: "sberry@companieshouse.gov.uk"
+            },
+            {
+              text: "Made this word super restricted"
+            }
+          ]
+        ]
+      }) }}
     </div>
   </div>
 {% endblock %}

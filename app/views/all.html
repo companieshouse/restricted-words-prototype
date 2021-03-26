@@ -12,14 +12,12 @@
           {{wordAdded | upper}}.
         </p>
         {% endset %}
-
         {{ govukNotificationBanner({
-  html: html,
-  type: 'success'
-}) }}
+          html: html,
+          type: 'success'
+        }) }}
       {% endif %}
       <h1 class="govuk-heading-xl">Restricted words list</h1>
-
       {{ govukButton({
         text: "Add new word",
         href: "add-new-word"
