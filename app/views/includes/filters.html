@@ -4,7 +4,7 @@
 
       <div role="widget" class="filter open">
         <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">
-          <span id="filter-label-crn"></span>Search for word</span>
+          <span id="filter-label-crn"></span>Search for restricted word</span>
         <div class="toggle"></div>
       </div>
       <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
@@ -18,14 +18,14 @@
     <div role="widget" class="filter open">
       <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">
         <span id="filter-label-status">
-          <span class="govuk-visually-hidden"></span>Super restricted words</span>
+          <span class="govuk-visually-hidden"></span>Filter by word type</span>
         <div class="toggle"></div>
       </div>
       <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
         <div class="govuk-checkboxes__item govuk-!-margin-top-0 govuk-!-margin-bottom-0">
           <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
           <label class="govuk-label govuk-checkboxes__label" for="waste-2">
-            Show only
+            Show super restricted words only
           </label>
         </div>
       </div>
@@ -35,7 +35,7 @@
       <div class="govuk-body filters-heading" role="button" aria-controls="filter-status" aria-expanded="true" tabindex="0">
         <span id="filter-label-status">
           <span class="govuk-visually-hidden">Filter by
-          </span>Status</span>
+          </span>Filter by status</span>
         <div class="toggle"></div>
       </div>
       {{ govukRadios({
@@ -52,7 +52,7 @@
           items: [
           {
             value: "All",
-            text: "All",
+            text: "Show all",
             checked: filterParams.status.referred.checked
           },
             {
@@ -62,7 +62,7 @@
             },
             {
               value: "Deleted",
-              text: "Deleted",
+              text: "Removed",
               checked: filterParams.status.accepted.checked
             }
           ]

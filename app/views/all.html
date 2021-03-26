@@ -19,7 +19,7 @@
       {% endif %}
       <h1 class="govuk-heading-xl">Restricted words list</h1>
       {{ govukButton({
-        text: "Add new word",
+        text: "Add new restricted word",
         href: "add-new-word"
       }) }}
     </div>
@@ -31,11 +31,11 @@
         <table class="govuk-table" id="all-cases-table">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="col">Word</th>
+              <th class="govuk-table__header" scope="col">Restricted word</th>
               <th class="govuk-table__header" scope="col">Added by</th>
               <th class="govuk-table__header" scope="col">Date added</th>
               <th class="govuk-table__header" scope="col">Date removed</th>
-              <th class="govuk-table__header" scope="col">Super restricted</th>
+              <th class="govuk-table__header" scope="col">Super restricted?</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body">
