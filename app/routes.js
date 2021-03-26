@@ -5,6 +5,7 @@ const router = express.Router()
 require('./routes/core.js')(router)
 require('./routes/all.js')(router)
 
+// Word page on get
 router.get('/word', function (req, res) {
   var word = req.query.word
   res.render('word', {
@@ -13,6 +14,7 @@ router.get('/word', function (req, res) {
   })
 })
 
+// Delete word page on get
 router.get('/delete-word', function (req, res) {
   var word = req.query.word
   res.render('delete-word', {
@@ -21,10 +23,12 @@ router.get('/delete-word', function (req, res) {
   })
 })
 
+// Add new word on post
 router.post('/add-new-word', function (req, res) {
   var errors = []
   var wordHasError = false
   var superrestrictedHasError = false
+  // Check to see if the input for the new word is blank
   if (req.session.data['new-word'] === '') {
     wordHasError = true
     errors.push({
@@ -32,6 +36,7 @@ router.post('/add-new-word', function (req, res) {
       href: '#new-word'
     })
   }
+  // Check to see if the radio options are blank
   if (typeof req.session.data['super-restricted-word'] === 'undefined') {
     superrestrictedHasError = true
     errors.push({
@@ -39,12 +44,14 @@ router.post('/add-new-word', function (req, res) {
       href: '#super-restricted-word'
     })
   }
+  // If either have an error then return the page with the errors
   if (wordHasError || superrestrictedHasError) {
     res.render('add-new-word', {
       errorWord: wordHasError,
       errorSuperrestricted: superrestrictedHasError,
       errorList: errors
     })
+  // If no errors then do this
   } else {
     req.session.wordAdded = req.body.newWord
     res.redirect('all?status=success')
