@@ -132,23 +132,23 @@
               <ul class="pagination govuk-body" role="navigation">
                 {% if pagination.currentPage > 1 %}
                   <li class="pagination__item pagination__item--disabled">
-                    <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="pagination__link pagination__link--disabled">Previous page</a>
+                    <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="pagination__link pagination__link--disabled govuk-link--no-visited-state">Previous page</a>
                   </li>
                 {% endif %}
                 {% for page in pagination.pages %}
                   {% if page.number === pagination.currentPage %}
                     <li class="pagination__item pagination__item--active">
-                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link pagination__link--active">{{ page.number }}</a>
+                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link pagination__link--active govuk-link--no-visited-state">{{ page.number }}</a>
                     </li>
                   {% else %}
                     <li class="pagination__item">
-                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link">{{ page.number }}</a>
+                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state">{{ page.number }}</a>
                     </li>
                   {% endif %}
                 {% endfor %}
                 {% if pagination.currentPage < pagination.totalPages %}
                   <li class="pagination__item">
-                    <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="pagination__link">Next page</a>
+                    <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state">Next page</a>
                   </li>
                 {% endif %}
               </ul>
