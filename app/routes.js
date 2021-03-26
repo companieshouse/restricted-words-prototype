@@ -46,6 +46,7 @@ router.post('/add-new-word', function (req, res) {
       errorList: errors
     })
   } else {
+    req.session.wordAdded = req.body.newWord
     res.redirect('all?status=success')
   }
 })

@@ -199,7 +199,8 @@ module.exports = function (router) {
       viewParams: viewParams,
       filterParams: filterParams,
       pagination: pagination,
-      status: status
+      status: status,
+      wordAdded: req.session.wordAdded
     })
   })
   router.post('all', function (req, res) {
