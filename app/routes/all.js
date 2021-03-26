@@ -191,12 +191,15 @@ module.exports = function (router) {
     filteredCases = mimicArray.splice(0)
     // console.log(filteredCases.splice(((viewParams.perPage.value * viewParams.page.value) - 1), viewParams.perPage.value))
 
+    var status = req.query.status
+
     res.render('all', {
       cases: filteredCases,
       allLinkActive: 'section-navigation__link--active',
       viewParams: viewParams,
       filterParams: filterParams,
-      pagination: pagination
+      pagination: pagination,
+      status: status
     })
   })
   router.post('all', function (req, res) {

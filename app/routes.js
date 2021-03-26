@@ -46,7 +46,7 @@ router.post('/add-new-word', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('all-success')
+    res.redirect('all?status=success')
   }
 })
 

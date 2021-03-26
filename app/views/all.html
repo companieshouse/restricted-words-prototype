@@ -5,7 +5,20 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      {% if status == 'success' %}
+        {% set html %}
+        <p class="govuk-notification-banner__heading">
+          You've added the word **WORD (uppercase)**.
+        </p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+      {% endif %}
       <h1 class="govuk-heading-xl">Restricted words list</h1>
+
       {{ govukButton({
         text: "Add new word",
         href: "add-new-word"
@@ -41,7 +54,9 @@
                 <td class="govuk-table__cell" scope="row">
                   {{ case.removedon }}
                 </td>
-                <td class="govuk-table__cell" scope="row"></td>
+                <td class="govuk-table__cell" scope="row">
+                  Yes
+                </td>
               </tr>
             {% endfor %}
           </tbody>
