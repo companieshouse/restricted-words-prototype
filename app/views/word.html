@@ -53,22 +53,30 @@
         href: "delete-word?word=" + word + '',
         classes: "govuk-button--warning"
       }) }}
-      <h2 class="govuk-heading-l">Super restricted</h2>
-      {{ govukCheckboxes({
-        idPrefix: "waste",
-        name: "waste",
-        fieldset: {
-          legend: {
-            text: "Should this word be super restricted?"
-          }
+      <h2 class="govuk-heading-l">Super restricted word</h2>
+      {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "super-restricted-word",
+      name: "super-restricted-word",
+      fieldset: {
+        legend: {
+          text: "Is this a super restricted word?"
+        }
+      },
+      hint: {
+        text: "This is an exceptionally offensive word which will be checked in documents."
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
         },
-        items: [
-          {
-            value: "carcasses",
-            text: "Yes"
-          }
-        ]
-      }) }}
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
       {{ govukButton({
         text: "Update"
       }) }}
@@ -80,10 +88,10 @@
             text: "Date"
           },
           {
-            text: "Who"
+            text: "Updated by"
           },
           {
-            text: "What"
+            text: "Super restricted?"
           }
         ],
         rows: [
@@ -95,7 +103,7 @@
               text: "sberry@companieshouse.gov.uk"
             },
             {
-              text: "Made this word super restricted"
+              text: "Yes"
             }
           ],
           [
@@ -106,7 +114,7 @@
               text: "sberry@companieshouse.gov.uk"
             },
             {
-              text: "Made this word not super restricted"
+              text: "No"
             }
           ],
           [
@@ -117,7 +125,7 @@
               text: "sberry@companieshouse.gov.uk"
             },
             {
-              text: "Made this word super restricted"
+              text: "Yes"
             }
           ]
         ]
