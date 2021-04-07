@@ -22,12 +22,34 @@
         <div class="toggle"></div>
       </div>
       <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
-        <div class="govuk-checkboxes__item govuk-!-margin-top-0 govuk-!-margin-bottom-0">
-          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
-          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
-            Show super restricted words only
-          </label>
-        </div>
+        {{ govukRadios({
+            idPrefix: "filter-status",
+            name: "filterStatus",
+            fieldset: {
+              legend: {
+                text: "What case statuses do you want to see?",
+                isPageHeading: false,
+                classes: "govuk-visually-hidden"
+              }
+            },
+            items: [
+            {
+              value: "All",
+              text: "Show all",
+              checked: filterParams.status.referred.checked
+            },
+              {
+                value: "Show super restricted words only",
+                text: "Show super restricted words only",
+                checked: filterParams.status.referred.checked
+              },
+              {
+                value: "Show non super restricted words",
+                text: "Show non super restricted words",
+                checked: filterParams.status.accepted.checked
+              }
+            ]
+          }) }}
       </div>
     </div>
 
