@@ -28,6 +28,9 @@
     <div class="govuk-grid-row">
       {% include "includes/filters.html" %}
       <div class="govuk-grid-column-three-quarters column-results column-results--active">
+
+        <h3 class="info result-count govuk-heading-m govuk-!-font-weight-regular" id="result-count" aria-live="assertive">{{length}}</h3>
+
         <table class="govuk-table" id="all-cases-table">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
@@ -63,7 +66,7 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third">
             <div class="table-per-page">
-              <form action="/cases/all" method="GET" id="resultsPerPage">
+              <form action="/all" method="GET" id="resultsPerPage">
                 {% if viewParams.perPage.value === 2 %}
                   {% set perPage2 = true %}
                 {% endif %}

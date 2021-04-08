@@ -56,7 +56,10 @@ tr:nth-child(even) {
 
 .govuk-extra-width-container,
 .govuk-width-overide .govuk-width-container {
-  max-width: 1280px;
+
+  max-width: 100%;
+  margin: 0 15px;
+
 }
 
 .govuk-table__cell-right {
@@ -98,4 +101,18 @@ tr:nth-child(even) {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+}
+
+.pagination__link {
+  text-decoration: none;
+}
+
+.pagination__link--active {
+  background: #f3f2f1;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.result-count {
+  font-size: 16px;
 }

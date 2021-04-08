@@ -13,3 +13,9 @@ $(document).ready(function () {
 function dismiss () {
   document.getElementById('notification').parentNode.style.display = 'none'
 };
+
+// RESULTS PER PAGE
+$('.table-per-page__input').change(function () {
+  $('#resultsPerPage').submit()
+  return false
+})
