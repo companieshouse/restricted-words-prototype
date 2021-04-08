@@ -18,6 +18,7 @@
         }) }}
       {% endif %}
       <h1 class="govuk-heading-xl">Restricted words list</h1>
+
       {{ govukButton({
         text: "Add new restricted word",
         href: "add-new-word"
@@ -63,7 +64,7 @@
             {% endfor %}
           </tbody>
         </table>
-        <div class="govuk-grid-row">
+        <div class="govuk-grid-row pagination-container">
           <div class="govuk-grid-column-one-third">
             <div class="table-per-page">
               <form action="/all" method="GET" id="resultsPerPage">
@@ -131,31 +132,38 @@
             </div>
           </div>
           <div class="govuk-grid-column-two-thirds">
-            {% if pagination.pages.length > 0 %}
-              <ul class="pagination govuk-body" role="navigation">
-                {% if pagination.currentPage > 1 %}
-                  <li class="pagination__item pagination__item--disabled">
-                    <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="pagination__link pagination__link--disabled govuk-link--no-visited-state">Previous page</a>
-                  </li>
-                {% endif %}
-                {% for page in pagination.pages %}
-                  {% if page.number === pagination.currentPage %}
-                    <li class="pagination__item pagination__item--active">
-                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link pagination__link--active govuk-link--no-visited-state">{{ page.number }}</a>
-                    </li>
-                  {% else %}
-                    <li class="pagination__item">
-                      <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state">{{ page.number }}</a>
+            <nav class="" id="pagination-label">
+              <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+              {% if pagination.pages.length > 0 %}
+                <ul class="pagination govuk-body" role="navigation">
+                  {% if pagination.currentPage > 1 %}
+                    <li class="pagination__item pagination__item--disabled">
+                      <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="pagination__link govuk-pagination-previous govuk-link--no-visited-state">Previous
+                        <span class="govuk-visually-hidden">
+                          set of pages</span></a>
                     </li>
                   {% endif %}
-                {% endfor %}
-                {% if pagination.currentPage < pagination.totalPages %}
-                  <li class="pagination__item">
-                    <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state">Next page</a>
-                  </li>
-                {% endif %}
-              </ul>
-            {% endif %}
+                  {% for page in pagination.pages %}
+                    {% if page.number === pagination.currentPage %}
+                      <li class="pagination__item pagination__item--active">
+                        <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link pagination__link--active govuk-link--no-visited-state">{{ page.number }}</a>
+                      </li>
+                    {% else %}
+                      <li class="pagination__item">
+                        <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state">{{ page.number }}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                  {% if pagination.currentPage < pagination.totalPages %}
+                    <li class="pagination__item">
+                      <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state govuk-pagination-next">Next
+                        <span class="govuk-visually-hidden">
+                          set of pages</span></a>
+                    </li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+            </nav>
           </div>
         </div>
       </div>
