@@ -1,5 +1,11 @@
 //Pagination
 
+.ch-pagination-container {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
 .ch-pagination__list {
   list-style: none;
   margin: 0;
@@ -24,12 +30,6 @@
 .ch-pagination__item--active span {
   padding: 5px;
   min-width: 25px;
-}
-
-.ch-pagination-container {
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
 }
 
 .ch-pagination-next:after,

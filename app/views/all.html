@@ -29,9 +29,7 @@
     <div class="govuk-grid-row">
       {% include "includes/filters.html" %}
       <div class="govuk-grid-column-three-quarters column-results column-results--active">
-
         <h3 class="info result-count govuk-heading-m govuk-!-font-weight-regular" id="result-count" aria-live="assertive">{{length}}</h3>
-
         <table class="govuk-table" id="all-cases-table">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
@@ -51,7 +49,7 @@
                   <a href="word?word={{ case.word}}" class="govuk-link govuk-link--no-visited-state">{{ case.word }}</a>
                 </th>
                 <td class="govuk-table__cell" scope="row">
-                  {{ case.added }}
+                  {{ [case.added, "dsmith@companieshouse.gov.uk", "Rmorgan@companieshouse.gov.uk", "lsmyth@companieshouse.gov.uk", "elynham@companieshouse.gov.uk", "JAbbott@companieshouse.gov.uk"] | random }}
                 </td>
                 <td class="govuk-table__cell" scope="row">
                   {{ case.addedon }}
@@ -60,113 +58,18 @@
                   {{ case.removedon }}
                 </td>
                 <td class="govuk-table__cell" scope="row">
-                  Yes
+                  {{["Yes", "No"] | random }}
                 </td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
-        <div class="govuk-grid-row pagination-container">
+        <div class="govuk-grid-row ch-pagination-container">
           <div class="govuk-grid-column-one-third">
-            <div class="table-per-page">
-              <form action="/all" method="GET" id="resultsPerPage">
-                {% if viewParams.perPage.value === 2 %}
-                  {% set perPage2 = true %}
-                {% endif %}
-                {% if viewParams.perPage.value === 5 %}
-                  {% set perPage5 = true %}
-                {% endif %}
-                {% if viewParams.perPage.value === 10 %}
-                  {% set perPage10 = true %}
-                {% endif %}
-                {% if viewParams.perPage.value === 20 %}
-                  {% set perPage20 = true %}
-                {% endif %}
-                {% if viewParams.perPage.value === 50 %}
-                  {% set perPage50 = true %}
-                {% endif %}
-                {% if viewParams.perPage.value === 100 %}
-                  {% set perPage100 = true %}
-                {% endif %}
-                {{ govukSelect({
-                      id: "results-per-page",
-                      classes: "table-per-page__input",
-                      name: "resultsPerPage",
-                      label: {
-                        html: "Words per page",
-                        classes: "table-per-page__label"
-                      },
-                      items: [
-                        {
-                          value: "2",
-                          text: "2",
-                          selected: perPage2
-                        },
-                        {
-                          value: "5",
-                          text: "5",
-                          selected: perPage5
-                        },
-                        {
-                          value: "10",
-                          text: "10",
-                          selected: perPage10
-                        },
-                        {
-                          value: "20",
-                          text: "20",
-                          selected: perPage20
-                        },
-                        {
-                          value: "50",
-                          text: "50",
-                          selected: perPage50
-                        },
-                        {
-                          value: "100",
-                          text: "100",
-                          selected: perPage100
-                        }
-                      ]
-                    }) }}
-                <input type="hidden" name="sortParam" value="{{ viewParams.sort.active }}">
-              </form>
-            </div>
+            {% include "includes/pagination-views-per-page.html" %}
           </div>
           <div class="govuk-grid-column-two-thirds">
-            <nav class="ch-pagination" role="navigation" aria-label="Pagination Navigation">
-              <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
-              {% if pagination.pages.length > 0 %}
-                <ul class="ch-pagination__list govuk-body" role="navigation">
-                  {% if pagination.currentPage > 1 %}
-                    <li class="ch-pagination__item">
-                      <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="ch-pagination__link ch--pagination-previous govuk-link--no-visited-state">Previous
-                        <span class="govuk-visually-hidden">
-                          set of pages</span></a>
-                    </li>
-                  {% endif %}
-                  {% for page in pagination.pages %}
-                    {% if page.number === pagination.currentPage %}
-                      <li class="ch-pagination__item ch-pagination__item--active">
-                        <span aria-current="true">{{ page.number }}</span>
-                      </li>
-                    {% else %}
-                      <li class="ch-pagination__item">
-                        <a href="?page={{ page.number }}{{ viewParams.total }}" class="ch-pagination__link govuk-link--no-visited-state" aria-label="Go to Page {{ page.number }}">
-                          {{ page.number }}</a>
-                      </li>
-                    {% endif %}
-                  {% endfor %}
-                  {% if pagination.currentPage < pagination.totalPages %}
-                    <li class="ch-pagination__item">
-                      <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="ch-pagination__link govuk-link--no-visited-state ch-pagination-next">Next
-                        <span class="govuk-visually-hidden">
-                          set of pages</span></a>
-                    </li>
-                  {% endif %}
-                </ul>
-              {% endif %}
-            </nav>
+            {% include "includes/pagination-links.html" %}
           </div>
         </div>
       </div>
