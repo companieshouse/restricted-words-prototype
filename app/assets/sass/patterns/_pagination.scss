@@ -1,0 +1,55 @@
+//Pagination
+
+.ch-pagination__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+}
+
+.ch-pagination__link {
+  text-decoration: none;
+  padding: 5px;
+  min-width: 25px;
+}
+
+.ch-pagination__item--active {
+  color: govuk-colour("black");
+  font-weight: bold;
+  cursor: default;
+}
+
+.ch-pagination__item--active span {
+  padding: 5px;
+  min-width: 25px;
+}
+
+.ch-pagination-container {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ch-pagination-next:after,
+.ch-pagination-previous:before {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-style: solid;
+  color: govuk-colour("black");
+  background: transparent;
+  transform: rotate(-45deg);
+  content: '';
+}
+
+.ch-pagination-next:after {
+  border-width: 0 3px 3px 0;
+  margin-left: 5px;
+}
+
+.ch-pagination-previous:before {
+  border-width: 3px 0 0 3px;
+  margin-right: 5px;
+}

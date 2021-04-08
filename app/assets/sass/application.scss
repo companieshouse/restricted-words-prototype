@@ -13,6 +13,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "patterns/pagination";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 tr:nth-child(even) {
@@ -94,60 +95,10 @@ tr:nth-child(even) {
   margin: 0;
 }
 
-.pagination {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.pagination__link {
-  text-decoration: none;
-  padding: 5px;
-  min-width: 25px;
-}
-
-.pagination__link--active,
-.pagination__link--active:visited {
-  color: #0b0c0c;
-}
-
 .result-count {
   font-size: 16px;
 }
 
-.pagination-container {
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
-}
-
 .govuk-form-group {
   margin-bottom: 0;
-}
-
-.govuk-pagination-next:after,
-.govuk-pagination-previous:before {
-  display: inline-block;
-  height: 10px;
-  width: 10px;
-  border-style: solid;
-  color: govuk-colour("black");
-  background: transparent;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  content: '';
-}
-
-.govuk-pagination-next:after {
-  border-width: 0 3px 3px 0;
-  margin-left: 5px;
-}
-
-.govuk-pagination-previous:before {
-  border-width: 3px 0 0 3px;
-  margin-right: 5px;
 }

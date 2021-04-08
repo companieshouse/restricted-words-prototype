@@ -1,32 +1,30 @@
-<div class="govuk-grid-column-one-quarter column-filters">
+<div class="govuk-grid-column-one-quarter">
   <section class="filters" id="filters">
     <form action="/all" method="post" id="filter-form">
-      <div role="widget" class="filter open">
-        <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">
-          <span id="filter-label-crn"></span>Search for restricted word</span>
-        <div class="toggle"></div>
-      </div>
-      <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
-        {{ govukInput({
+      <div role="widget" class="filter">
+        <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">Search for restricted word
+        </div>
+        <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
+          {{ govukInput({
             id: "filter-company-number",
             name: "filterCompanyNumber",
             value: filterParams.companyNumber
           }) }}
+        </div>
       </div>
-    </div>
-    <div role="widget" class="filter open">
-      <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">
-        <span id="filter-label-status">
-          <span class="govuk-visually-hidden"></span>Filter by word type</span>
-        <div class="toggle"></div>
-      </div>
-      <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
-        {{ govukRadios({
-            idPrefix: "filter-status",
-            name: "filterStatus",
+      <div role="widget" class="filter">
+        <div class="govuk-body filters-heading" role="button" aria-controls="filter-crn" aria-expanded="true" tabindex="0">
+          <span id="filter-label-status">
+            <span class="govuk-visually-hidden">Filter by
+            </span>Word type</span>
+        </div>
+        <div id="filter-crn" class="filters-wrapper" aria-hidden="true" aria-labelledby="filter-label-crn">
+          {{ govukRadios({
+            idPrefix: "filter-word-type",
+            name: "filterWordType",
             fieldset: {
               legend: {
-                text: "What case statuses do you want to see?",
+                text: "What word type do you want to see?",
                 isPageHeading: false,
                 classes: "govuk-visually-hidden"
               }
@@ -49,17 +47,16 @@
               }
             ]
           }) }}
+        </div>
       </div>
-    </div>
 
-    <div role="widget" class="filter open">
-      <div class="govuk-body filters-heading" role="button" aria-controls="filter-status" aria-expanded="true" tabindex="0">
-        <span id="filter-label-status">
-          <span class="govuk-visually-hidden">Filter by
-          </span>Filter by status</span>
-        <div class="toggle"></div>
-      </div>
-      {{ govukRadios({
+      <div role="widget" class="filter">
+        <div class="govuk-body filters-heading" role="button" aria-controls="filter-status" aria-expanded="true" tabindex="0">
+          <span id="filter-label-status">
+            <span class="govuk-visually-hidden">Filter by
+            </span>Status</span>
+        </div>
+        {{ govukRadios({
           idPrefix: "filter-status",
           name: "filterStatus",
           fieldset: {
@@ -88,11 +85,10 @@
             }
           ]
         }) }}
-    </div>
-    {{ govukButton({
-        text: "Search",
-         classes: "govuk-!-margin-right-1"
+      </div>
+      {{ govukButton({
+        text: "Search"
       }) }}
-  </form>
-</section>
+    </form>
+  </section>
 </div>

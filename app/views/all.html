@@ -35,7 +35,9 @@
         <table class="govuk-table" id="all-cases-table">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="col">Restricted word</th>
+              <th class="govuk-table__header" scope="col">
+                <span class="govuk-visually-hidden">Restricted</span>
+                Word</th>
               <th class="govuk-table__header" scope="col">Added by</th>
               <th class="govuk-table__header" scope="col">Date added</th>
               <th class="govuk-table__header" scope="col">Date removed</th>
@@ -132,31 +134,32 @@
             </div>
           </div>
           <div class="govuk-grid-column-two-thirds">
-            <nav class="" id="pagination-label">
+            <nav class="ch-pagination" role="navigation" aria-label="Pagination Navigation">
               <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
               {% if pagination.pages.length > 0 %}
-                <ul class="pagination govuk-body" role="navigation">
+                <ul class="ch-pagination__list govuk-body" role="navigation">
                   {% if pagination.currentPage > 1 %}
-                    <li class="pagination__item pagination__item--disabled">
-                      <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="pagination__link govuk-pagination-previous govuk-link--no-visited-state">Previous
+                    <li class="ch-pagination__item">
+                      <a href="?page={{ pagination.previousPage }}{{ viewParams.total }}" class="ch-pagination__link ch--pagination-previous govuk-link--no-visited-state">Previous
                         <span class="govuk-visually-hidden">
                           set of pages</span></a>
                     </li>
                   {% endif %}
                   {% for page in pagination.pages %}
                     {% if page.number === pagination.currentPage %}
-                      <li class="pagination__item pagination__item--active">
-                        <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link pagination__link--active govuk-link--no-visited-state">{{ page.number }}</a>
+                      <li class="ch-pagination__item ch-pagination__item--active">
+                        <span aria-current="true">{{ page.number }}</span>
                       </li>
                     {% else %}
-                      <li class="pagination__item">
-                        <a href="?page={{ page.number }}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state">{{ page.number }}</a>
+                      <li class="ch-pagination__item">
+                        <a href="?page={{ page.number }}{{ viewParams.total }}" class="ch-pagination__link govuk-link--no-visited-state" aria-label="Go to Page {{ page.number }}">
+                          {{ page.number }}</a>
                       </li>
                     {% endif %}
                   {% endfor %}
                   {% if pagination.currentPage < pagination.totalPages %}
-                    <li class="pagination__item">
-                      <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="pagination__link govuk-link--no-visited-state govuk-pagination-next">Next
+                    <li class="ch-pagination__item">
+                      <a href="?page={{ pagination.nextPage}}{{ viewParams.total }}" class="ch-pagination__link govuk-link--no-visited-state ch-pagination-next">Next
                         <span class="govuk-visually-hidden">
                           set of pages</span></a>
                     </li>
