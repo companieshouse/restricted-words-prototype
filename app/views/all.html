@@ -1,6 +1,6 @@
 {% extends "layout-wider.html" %}
 {% block pageTitle %}
-  Restricted words - Companies House Internal Service
+  Overview - Restricted words - Companies House Internal Service
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
@@ -17,7 +17,8 @@
           type: 'success'
         }) }}
       {% endif %}
-      <h1 class="govuk-heading-xl">Restricted words list</h1>
+      <span class="govuk-caption-xl">Restricted words</span>
+      <h1 class="govuk-heading-xl">Overview</h1>
 
       {{ govukButton({
         text: "Add new restricted word",
